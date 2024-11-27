@@ -25,7 +25,7 @@ class Config:
     csvColumns = None
     csvRecordDel = None
     csvFieldDel = None
-    csvCharset = None
+    csvCharset = 'utf-8'
     xmlXpath = None
     jsonQuery = None
     jsonQLQuery = None
@@ -41,10 +41,10 @@ class Config:
     writeJasper = False
     copies = None
     outFieldDel = None
-    outCharset = None
+    outCharset = 'utf-8'
     useJaxen = True
     subreports = {}
-
+    extraClassPath = ()
     jvm_opts = ()
     jvm_maxmem = '512M'
     jvm_classpath = None

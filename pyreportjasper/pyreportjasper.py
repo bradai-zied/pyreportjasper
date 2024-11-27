@@ -45,7 +45,7 @@ class PyReportJasper:
     TypeJava = Report.TypeJava
 
     def config(self, input_file, output_file=False, output_formats=['pdf'], parameters={}, db_connection={},
-               locale='en_US', resource=None, subreports=None, jvm_opts=()):
+               locale='en_US', resource=None, subreports=None, jvm_opts=(),extra_classpath=()):
         if not input_file:
             raise NameError('No input file!')
         if isinstance(output_formats, list):
@@ -59,6 +59,7 @@ class PyReportJasper:
         self.config.locale = locale
         self.config.resource = resource
         self.config.outputFormats = output_formats
+        self.config.extraClassPath=extra_classpath
         if output_file:
             self.config.output = output_file
         else:

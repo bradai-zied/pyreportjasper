@@ -54,13 +54,18 @@ class Report:
                 os.path.join(self.LIB_PATH, "*"),
                 os.path.join(self.JDBC_PATH, "*"),
             ]
-
+            for path in self.config.extraClassPath:
+                classpath.append(path)
+                
             if self.config.resource and os.path.isdir(self.config.resource):
                 classpath.append(os.path.join(self.config.resource, "*"))
 
+            if self.config.has_jdbc_dir():
+                classpath.append(os.path.join(self.config.jdbcDir, "*") )
+
             if self.config.jvm_classpath:
                 classpath.append(self.config.jvm_classpath)
-
+             
             if self.config.jvm_classpath is None:
                 jvm_args = [
                     "-Djava.system.class.loader=org.update4j.DynamicClassLoader",
@@ -148,8 +153,8 @@ class Report:
                         'It was not possible to add the path {0} to the Class Path: ERROR: {1}'\
                         .format(self.config.resource, str(ex)))
 
-        if self.config.has_jdbc_dir():
-            self.add_jar_class_path(self.config.jdbcDir)
+        # if self.config.has_jdbc_dir():
+        #     self.add_jar_class_path(self.config.jdbcDir)
 
         try:
             # This fails in case of an jrxml file
