@@ -97,8 +97,8 @@ class Db:
             dbname = config.dbName
             connect_string = "jdbc:postgresql://{}:{}/{}".format(host, port, dbname)
         elif dbtype == "oracle":
-            if config.dbUrl is not None:
-              driver = config.dbDriver
+            driver = config.dbDriver
+            if config.dbUrl is None:
               port = config.dbPort or 1521
               sid = config.dbSid
               connect_string = "jdbc:oracle:thin:@{}:{}:{}".format(host, port, sid)
