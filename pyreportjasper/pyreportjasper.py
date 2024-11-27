@@ -59,7 +59,7 @@ class PyReportJasper:
         self.config.locale = locale
         self.config.resource = resource
         self.config.outputFormats = output_formats
-        self.config.extraClassPath=extra_classpath
+        self.config.extraClassPath=extra_classpath # by zvo
         if output_file:
             self.config.output = output_file
         else:

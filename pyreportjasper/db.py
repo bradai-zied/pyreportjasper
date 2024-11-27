@@ -98,12 +98,12 @@ class Db:
             connect_string = "jdbc:postgresql://{}:{}/{}".format(host, port, dbname)
         elif dbtype == "oracle":
             driver = config.dbDriver
-            if config.dbUrl is None:
+            if config.dbUrl is None: # by zvo
               port = config.dbPort or 1521
               sid = config.dbSid
               connect_string = "jdbc:oracle:thin:@{}:{}:{}".format(host, port, sid)
-            else:
-              connect_string =config.dbUrl
+            else: # by zvo
+              connect_string =config.dbUrl # by zvo
         elif dbtype == "generic":
             driver = config.dbDriver
             connect_string = config.dbUrl
